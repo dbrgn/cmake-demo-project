@@ -1,0 +1,3 @@
+[submodule "3rdparty/cmark"]
+	path = 3rdparty/cmark
+	url = https://github.com/commonmark/cmark
