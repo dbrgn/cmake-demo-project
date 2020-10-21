@@ -3,17 +3,16 @@
 This is a demo project that uses qt + cmake. Its intention is to be used as a
 playground for a potential LibrePCB build system migration.
 
-## Linking
 
-For third party libraries, linking should happen as follows:
+## Structure
 
-- If the submodule is found, then that version is used and the library is
-  linked statically
-- Otherwise, try to find the library as a shared library on the system, link
-  against that one
+The most important file is `CMakeLists.txt`.
 
-This means that to unbundle a vendored library, you simply delete the
-directory.
+In order for `find_package(cmark)` to work, there's a find-file at
+`cmake/Findcmark.cmake`.
+
+Submodules are located in the `3rdparty` directory.
+
 
 ## Building
 
@@ -34,6 +33,20 @@ To build the project, either:
 
     # Build
     cmake --build build
+
+
+## Linking
+
+For third party libraries, linking should happen as follows:
+
+- If the submodule is found, then that version is used and the library is
+  linked statically
+- Otherwise, try to find the library as a shared library on the system, link
+  against that one
+
+This means that to unbundle a vendored library, you simply delete the
+directory.
+
 
 ## Resources
 
