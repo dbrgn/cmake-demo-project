@@ -40,12 +40,12 @@ To build the project, either:
 For third party libraries, linking should happen as follows:
 
 - If the submodule is found, then that version is used and the library is
-  linked statically
+  linked statically, unless `UNBUNDLE_<lib>` or `UNBUNDLE_ALL` is set
 - Otherwise, try to find the library as a shared library on the system, link
   against that one
 
 This means that to unbundle a vendored library, you simply delete the
-directory.
+directory, or alternatively set `UNBUNDLE_<lib>` or `UNBUNDLE_ALL`.
 
 
 ## Resources

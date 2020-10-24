@@ -1,7 +1,7 @@
-# If submodule exists, prefer static linking to bundled source
-
 set(CMARK_SUBMODULE_BASEPATH "${PROJECT_SOURCE_DIR}/3rdparty/cmark")
-if(EXISTS "${CMARK_SUBMODULE_BASEPATH}")
+if(EXISTS "${CMARK_SUBMODULE_BASEPATH}" AND NOT UNBUNDLE_CMARK AND NOT UNBUNDLE_ALL)
+    message(STATUS "Using vendored cmark")
+
     # Only build static lib
     set(CMARK_STATIC ON)
     set(CMARK_DYNAMIC OFF)
@@ -19,6 +19,7 @@ endif()
 
 # Otherwise, try to find shared library on the system
 
+message(STATUS "Using system cmark")
 find_package(PkgConfig)
 pkg_check_modules(PC_CMARK QUIET cmark)
 
