@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->label->setText(cmark_markdown_to_html("# Hello cmark", 13, 0));
+    ui->label->setText(ui->label->text() + "<br>" + cmark_markdown_to_html("# Hello cmark", 13, 0));
 }
 
 MainWindow::~MainWindow()
