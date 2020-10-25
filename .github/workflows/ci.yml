@@ -15,24 +15,32 @@ jobs:
             build_type: "Release"
             cc: "cl"
             cxx: "cl"
+            qt: 5.15.1
           - name: "Windows Latest MinGW"
             os: windows-latest
             build_type: "Release"
             cc: "gcc"
             cxx: "g++"
+            qt: 5.15.1
           - name: "Ubuntu Latest GCC"
             os: ubuntu-latest
             build_type: "Release"
             cc: "gcc"
             cxx: "g++"
+            qt: 5.15.1
           - name: "macOS Latest Clang"
             os: macos-latest
             build_type: "Release"
             cc: "clang"
             cxx: "clang++"
+            qt: 5.15.1
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: ${{ matrix.config.qt }}
       - name: Show cmake version
         run: cmake --version
       - name: Run cmake
