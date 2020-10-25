@@ -4,7 +4,7 @@ if(EXISTS "${CMARK_SUBMODULE_BASEPATH}" AND NOT UNBUNDLE_CMARK AND NOT UNBUNDLE_
 
     # Only build static lib
     set(CMARK_STATIC ON)
-    set(CMARK_DYNAMIC OFF)
+    set(CMARK_SHARED OFF)
     set(CMARK_TESTS OFF)
 
     # Include local submodule
