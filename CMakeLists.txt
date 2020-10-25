@@ -52,11 +52,14 @@ add_executable(cmake-demo-project
     mainwindow.ui
     ${TS_FILES}
 )
-
 target_link_libraries(cmake-demo-project PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
     cmark::cmark
 )
-
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 
+# Install target
+include(GNUInstallDirs)
+install(
+    TARGETS cmake-demo-project
+)
