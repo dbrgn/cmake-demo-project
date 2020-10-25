@@ -10,10 +10,6 @@ project(cmake-demo-project
     DESCRIPTION "A demo project to test cmake."
     LANGUAGES CXX)
 
-# Options
-option(UNBUNDLE_CMARK "Don't use vendored cmark library." OFF)
-option(UNBUNDLE_ALL "Don't use any vendored library." OFF)
-
 # Auto-include current directory
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
