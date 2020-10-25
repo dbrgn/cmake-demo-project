@@ -1,0 +1,42 @@
+name: CMake Build Matrix
+
+on: [push]
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: "Windows Latest MSVC"
+            os: windows-latest
+            build_type: "Release"
+            cc: "cl"
+            cxx: "cl"
+          - name: "Windows Latest MinGW"
+            os: windows-latest
+            build_type: "Release"
+            cc: "gcc"
+            cxx: "g++"
+          - name: "Ubuntu Latest GCC"
+            os: ubuntu-latest
+            build_type: "Release"
+            cc: "gcc"
+            cxx: "g++"
+          - name: "macOS Latest Clang"
+            os: macos-latest
+            build_type: "Release"
+            cc: "clang"
+            cxx: "clang++"
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Show cmake version
+        run: cmake --version
+      - name: Run cmake
+        env:
+          CC: ${{ matrix.config.cc }}
+          CXX: ${{ matrix.config.cxx }}
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
