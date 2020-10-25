@@ -1,5 +1,7 @@
 # cmake demo lib
 
+![CMake Build Matrix](https://github.com/dbrgn/cmake-demo-project/workflows/CMake%20Build%20Matrix/badge.svg)
+
 This is a demo project that uses qt + cmake. Its intention is to be used as a
 playground for a potential LibrePCB build system migration.
 
