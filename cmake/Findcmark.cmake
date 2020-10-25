@@ -3,9 +3,9 @@ if(EXISTS "${CMARK_SUBMODULE_BASEPATH}" AND NOT UNBUNDLE_CMARK AND NOT UNBUNDLE_
     message(STATUS "Using vendored cmark")
 
     # Only build static lib
-    set(CMARK_STATIC ON)
-    set(CMARK_SHARED OFF)
-    set(CMARK_TESTS OFF)
+    set(CMARK_STATIC ON CACHE BOOL "Build static libcmark library" FORCE)
+    set(CMARK_SHARED OFF CACHE BOOL "Build shared libcmark library" FORCE)
+    set(CMARK_TESTS OFF CACHE BOOL "Build cmark tests and enable testing" FORCE)
 
     # Include local submodule
     add_subdirectory("${CMARK_SUBMODULE_BASEPATH}" EXCLUDE_FROM_ALL)
