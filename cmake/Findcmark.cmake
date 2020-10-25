@@ -1,12 +1,12 @@
 set(CMARK_SUBMODULE_BASEPATH "${PROJECT_SOURCE_DIR}/3rdparty/cmark")
 
+# Only build static lib
+set(CMARK_STATIC ON CACHE BOOL "Build static libcmark library" FORCE)
+set(CMARK_SHARED OFF CACHE BOOL "Build shared libcmark library" FORCE)
+set(CMARK_TESTS OFF CACHE BOOL "Build cmark tests and enable testing" FORCE)
+
 # Include local submodule
 add_subdirectory("${CMARK_SUBMODULE_BASEPATH}" EXCLUDE_FROM_ALL)
-
-# Only build static lib
-set_property(TARGET libcmark_static PROPERTY CMARK_STATIC ON)
-set_property(TARGET libcmark_static PROPERTY CMARK_SHARED OFF)
-set_property(TARGET libcmark_static PROPERTY CMARK_TESTS OFF)
 
 # Alias static lib to namespaced variant
 add_library(cmark::cmark ALIAS libcmark_static)
